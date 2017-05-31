@@ -20,19 +20,21 @@ public class SimpleExcelWriter {
 	                {"Expected Session Rate ","3.4%"}
 	        };
 	 
-	        int rowCount = 0;
+	        int rowCount = 0, columnCount=0; 
 	         
 	        for (Object[] aUser : UserData) {
-	            Row row = sheet.createRow(++rowCount);
+	            Row row = sheet.createRow(rowCount++);
 	             
-	            int columnCount = 0;
+	            
 	             
 	            for (Object field : aUser) {
-	                Cell cell = row.createCell(++columnCount);
+	                Cell cell = row.createCell(columnCount++);
 	                if (field instanceof String) {
 	                    cell.setCellValue((String) field);
 	                } else if (field instanceof Integer) {
 	                    cell.setCellValue((Integer) field);
+	                    else
+	                    	system.out.println("Error Found");
 	                }
 	            }
 	             
