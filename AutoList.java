@@ -21,7 +21,7 @@ public class JParse2 {
 
 			JSONArray arr = (JSONArray) jsonObject.get("treeTableJson");
             List<test1>testlist=new ArrayList<test1>();
-            List<Test>Iplist   = new ArrayList<Test>();
+           
 			System.out.println(arr.size());
 			for (int i = 0; i < arr.size(); i++) {
 				JSONObject obj3 = (JSONObject) arr.get(i);
@@ -35,14 +35,30 @@ public class JParse2 {
 				System.out.println(name);
 
 				System.out.println(arrchild.size());
-				if (arrchild.size() >0) {
-					for (int j = 0; j <arrchild.size(); j++) {
+				if (arrchild.size() > 0) {
+					for (int j = 0; j < arrchild.size(); j++) {
 						JSONObject treeTableJsonObj = (JSONObject) arrchild.get(j);
 						JSONObject dataob = (JSONObject) treeTableJsonObj.get("data");
-						Test t2 = new Test("",name,pv);
-						Iplist.add(t2);
-						System.out.println(dataob.get("pvs m,").toString());
-						System.out.println(dataob.get("name").toString());
+						test1 t2 = new test1("", name, pv);
+						testlist.add(t2);
+
+					}
+
+				}
+			}
+			// loop array for displaying tables
+
+			Iterator itr = testlist.iterator();
+
+			while (itr.hasNext())
+
+			{
+				test1 tt = (test1) itr.next();
+				System.out.println("Pages" + tt.getPages());
+				System.out.println("Previous"+tt.getPvs());
+				System.out.println("Flows" +tt.getFlows());
+
+			}
 
 					}
 
